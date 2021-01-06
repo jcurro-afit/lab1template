@@ -36,14 +36,16 @@ RUN python3 -m pip install --upgrade pip \
 
 ### Extras
 All the lines above we will use for every lab in some way. The next lines are to illustrate the difference between `ARG` and `ENV`.
-- Add an environment called `SOMENUMBER_ENV` and make the default value 3.
-- Add an argument called `SOMENUMBER_ARG` and make the default value 5. 
- 
-- Copy into the image a shell script called `echoscript.sh` with the following contents
+
+In the Dockerfile add the following:
+- Add a line of code in the dockerfile to add an environment called `SOMENUMBER_ENV` and make the default value 3.
+- Add a line of code in the dockerfile to add an argument called `SOMENUMBER_ARG` and make the default value 5.
+- Make a shell script called `echoscript.sh`. The script will echo (print to the terminal) the above variables using the following contents
 ```bash
 echo ENV: ${SOMENUMBER_ENV}
 echo ARG: ${SOMENUMBER_ARG}
 ```
+- Add a line of code in the dockerfile to copy the above shell script into the container 
 
 ## Run Docker Image
 Usually we will not run docker image directly but we will once to show how it is done.
