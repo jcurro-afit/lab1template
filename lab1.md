@@ -12,7 +12,7 @@ First we will make a dockerfile so that we can build an image for this project.
     - Whenever you install packages you always need to update first in the same line. If you do not update then if you build the image later it will run into errors because the packages will be out of date. Here is the dockerfile example lines of code to install packages: 
         
       ```dockerfile
-      RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      RUN apt-get update &&  DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             graphviz \
             python3-tk \
         # now in the same command clean up the pacakges to shrink layer size
