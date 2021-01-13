@@ -97,16 +97,16 @@ Setup Pycharm to use the `docker-compose.yml` file from eariler (See user instru
 
 
 # Make the lab easier to grade
-In the interest of making the lab easier to grade we will always make the `docker-compose.yml` of the lab able to run and do all work required simply by running docker-compose in the root folder. The command I will run to check the lab code will be:
+In the interest of making the lab easier to grade we will always make the `docker-compose.yml` of the lab able to run and do all work required simply by running `docker-compose up` in the root folder. The command I will run to check the lab code will be:
     
 ```bash
-docker-compose -v "$PWD:/opt/project" up --build labX
+docker-compose up --build labX
 ```
 This command mounts the project and data folder automatically.
 
 You will have to modify the `command` of the service in the `docker-compose.yml` to run the main python code for the project. For Example `command: python src/lab1.py`.
 
-When you use any data in your lab do not modify the data as given by the instructor. Have your code expect all the data to be in `/opt/data` inside the container. This way the code can run on any computer without modifying the data. You will need to make processed data in future labs so put all processed data in a folder with your name like `/opt/data/eeng645/lab1/yourname` so your code does not fail because of data from other students. Thus your code should run from a fresh empty data directory and make all necessary processed data and folders besides the given data for the lab. 
+When you use any data in your lab (usually provided by the instructor) do not modify the data as given by the instructor. Have your code expect all the data to be in `/opt/data` inside the container. This way the code can run on any computer without modifying the data. You will need to make processed data in future labs so put all processed data in a folder with your name like `/opt/data/eeng645/lab1/yourname` or the project folder (but don't commit them to GitHub!) so your code does not fail because of data from other students. Thus, your code should run from a fresh empty data directory and make all necessary processed data and folders besides the given data for the lab. 
 
 ## Git
 For good programming practices and to make it easier to grade students will also push their code to the GitHub repository. 
@@ -115,12 +115,5 @@ To save space on our GitLab server never put large files in the git repository. 
 
 In order to ignore large files and other nusiance files we will add a file called `.gitignore` to the project root. We will add `*.pyc` and `.idea` to the `.gitignore` file which will ignore all `.pyc` files and the `.idea` folder which is PyCharm's project for your personal project settings. Always make the `.gitignore` before adding and committing files.
 
-## Add and Commit Files
-On the `git.antcenter.net` site make a new git repository in the `EENG645` group `lab1` subgroup named `lab1youlastname`. Do not initialize with a README unless you have memorized the commands to upload the project.
- 
-Remember that projects in this group can be seen by everyone. This allows everyone to see your project due to permissions but anyone caught copying other work will face the consequences outlined on the syllabus. This also lets you see the instructor code when you are stuck but blindly copying all the instructor code will not get you a full grade.
-
-Follow the instruction to add the Pycharm project from above to the repository (because you DID NOT initialize with a README). The last command should have had you push the project.
-
-## New commit
-In order to show that you can make new commits add a comment line to the python script with the text `new commit text`. Then add then commit that change and push that as well.
+### Add and Commit Files
+Use the GitHub Classroom assignment for each lab to submit your final code for each lab. Clone the template example with your name made automatically and modify the code for the lab (commit often!). In order to show that you can make new commits add a comment line to the python script with the text `new commit text`. Then add then commit that change and push that as well. This shows that you know enough to clone, add, commit, commit again, and then push a repo. 
