@@ -107,6 +107,17 @@ This command mounts the project and data folder automatically.
 You will have to modify the `command` of the service in the `docker-compose.yml` to run the main python code for the project. For Example `command: python src/lab1.py`.
 
 When you use any data in your lab (usually provided by the instructor) do not modify the data as given by the instructor. Have your code expect all the data to be in `/opt/data` inside the container. This way the code can run on any computer without modifying the data. You will need to make processed data in future labs so put all processed data in a folder with your name like `/opt/data/eeng645/lab1/yourname` or the project folder (but don't commit them to GitHub!) so your code does not fail because of data from other students. Thus, your code should run from a fresh empty data directory and make all necessary processed data and folders besides the given data for the lab. 
+## Lab1 specifics
+For lab1 I will specifically be running the following commands (ie. make sure these commands work)
+```bash
+# check the build and run script
+/bin/bash buildandrundocker.sh
+# check the docker-compose and python
+docker-compose up --build
+# check user added multiple commits
+git log
+```
+I will also look at other files for comments as noted in the lab so these commands are necessary but not sufficient to complete the lab.
 
 ## Git
 For good programming practices and to make it easier to grade students will also push their code to the GitHub repository. 
