@@ -46,14 +46,16 @@ echo ENV: ${SOMENUMBER_ENV}
 echo ARG: ${SOMENUMBER_ARG}
 ```
 - Add a line of code in the dockerfile to copy the above shell script into the container 
+- Add a line of code to run the shell script during the build phase using the `RUN` keyword
+- Add a line of code to run the scell script as the default command using the `CMD` keyword
 
 ## Run Docker Image
 Usually we will not run docker image directly but we will once to show how it is done.
 - Make a shell script called `buildandrundocker.sh` that builds the docker image in one line. Usually you would just run the command on the command line but I need to see what you actually were running. 
 - Give the image the tag `lab1:yourlastname`. 
-- Make `buildandrundocker.sh` also run the image after the image is build. The container should run the `echoscript.sh` using `/bin/bash` when started.
+- Make `buildandrundocker.sh` also run the image after the image is build. The container should automatically run the `echoscript.sh` when started due to the `CMD` line added in the `Dockerfile`.
 
-Run `buildandrundocker.sh` and briefly explain the echo output in a comment in the `buildandrundocker.sh` file
+Run `buildandrundocker.sh` and briefly explain the echo output in a comment in the `buildandrundocker.sh` file. You should compare and contrast the argument and the environment variables from the two times we ran  `echoscript.sh`. 
 
 ## Docker Compose
 We will usually run all our docker containers using `docker-compose`. This will walk through the steps to make a docker compose file
@@ -75,7 +77,9 @@ We will usually run all our docker containers using `docker-compose`. This will 
 - Make a `volumes` group under the service so we can mount some folders. 
     - Mount the folder `/tmp/.X11-unix` on the host to the folder `/tmp/.X11-unix` on the container. This will help us plot figures in `matplotlib`
     - Mount the folder `/etc/passwd` on the host to the folder `/etc/passwd` on the container. This will help certain programs know your username from your user id you set earlier.
-    - Mount the folder `/opt/data` on the host to  `/opt/data` inside the container. This spot on your host machien is where you will store future lab data so make sure the drive it is on has some space. You may not want to put all your data there at `/opt/data`. If so make a folder on your host machine wherever you want called `data`.  Now make a link at `/opt/data/` that goes to that folder. For example `ln -s /home/yourusername/path/to/your/folder/data /opt/data`.  This ensures all our data will be in the same spot for any host computer we run on.  
+    - Mount the folder `/opt/data` on the host to  `/opt/data` inside the container. This spot on your host machine is where you will store future lab data so make sure the drive it is on has some space. You may not want to put all your data there at `/opt/data`. If so make a folder on your host machine wherever you want called `data`.  Now make a link at `/opt/data/` that goes to that folder. For example `ln -s /home/yourusername/path/to/your/folder/data /opt/data`.  This ensures all our data will be in the same spot for any host computer we run on.
+    - Mount the current folder `.` on the host to `/opt/project` inside the container. This is the standard place for our project code to be.
+- Set the default working directory to the `/opt/project` folder ide the container.
 - Make the `command` argument of the docker compose run `echoscript.sh` from above using `/bin/bash`.
 
 Run `docker-compose build` (build the container even if it already exists) and then `docker-compose up` to run the docker compose. Briefly explain in a comment the `buildandrundocker.sh` file the difference between when you ran the docker container without the compose changing values. 
@@ -84,8 +88,9 @@ Run `docker-compose build` (build the container even if it already exists) and t
 Next we will write a python file called `lab1.py` that will run in the docker container we just made.
 The python file will do the following:
 1. Make a list from one to ten and initialize to all ones
-2. Calculate the first 10 fibonacci numbers using a loop and put them in the previous list
-3. Print the fibonacci numbers to the console
+1. Make the first entry in the list a zero
+1. Calculate the first 10 fibonacci numbers (starting with 0, 1) using a loop and put them in the previous list
+1. Print the fibonacci numbers to the console
 
 ## PyCharm Project
 Put all of this in a python PyCharm project. Put the python code in a folder named `src`. From in PyCharm right click on the `src` folder and go to `Mark Directory as` then click on `Sources Root`.
@@ -104,7 +109,7 @@ docker-compose up --build labX
 ```
 This command mounts the project and data folder automatically.
 
-You will have to modify the `command` of the service in the `docker-compose.yml` to run the main python code for the project. For Example `command: python src/lab1.py`.
+You will have to modify the `command` of the service in the `docker-compose.yml` to run the main python code for the project. For Example `command: python src/lab1.py`. For lab1 keep the old command as a comment but make this the final one that runs.
 
 When you use any data in your lab (usually provided by the instructor) do not modify the data as given by the instructor. Have your code expect all the data to be in `/opt/data` inside the container. This way the code can run on any computer without modifying the data. You will need to make processed data in future labs so put all processed data in a folder with your name like `/opt/data/eeng645/lab1/yourname` or the project folder (but don't commit them to GitHub!) so your code does not fail because of data from other students. Thus, your code should run from a fresh empty data directory and make all necessary processed data and folders besides the given data for the lab. 
 ## Lab1 specifics
