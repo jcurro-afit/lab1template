@@ -19,7 +19,7 @@ First we will make a dockerfile so that we can build an image for this project.
         && apt-get clean \
         && rm -rf /var/lib/apt/lists/*
       ```
-    - Note sometimes packages will not install because they wanted user intput. In this case need to put `DEBIAN_FRONTEND=noninteractive` before the `apt-get install`. For example the package `python3-tk` (which allows figures in `matplotlib`) will ask for user input if you do not include this line. In case you are confused on bash syntax the `&&` is to run multiple commands with the same line. Each line needs a `\` at the end if you want the previous line to continue. The last two lines are to cleanup the `apt-get` commands earlier:
+    - Note sometimes packages will not install because they wanted user input. In this case need to put `DEBIAN_FRONTEND=noninteractive` before the `apt-get install`. For example the package `python3-tk` (which allows figures in `matplotlib`) will ask for user input if you do not include this line. In case you are confused on bash syntax the `&&` is to run multiple commands with the same line. Each line needs a `\` at the end if you want the previous line to continue. The last two lines are to cleanup the `apt-get` commands earlier:
     
     ```dockerfile
         && apt-get clean \
@@ -32,7 +32,7 @@ First we will make a dockerfile so that we can build an image for this project.
 RUN python3 -m pip install --upgrade pip \
     && python3 -m pip install --no-cache-dir -r requirements.txt
 ```
-- Note `python -m pip` is intalling pip packages and making sure our `python` environment is where they get installed. Usually this is the same as just saying `pip`.
+- Note `python -m pip` is installing pip packages and making sure our `python` environment is where they get installed. Usually this is the same as just saying `pip`.
 
 ### Extras
 All the lines above we will use for every lab in some way. The next lines are to illustrate the difference between `ARG` and `ENV`.
