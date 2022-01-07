@@ -6,7 +6,7 @@ This lab will walk you through the tools we will use in this class and the best 
 ## Make Dockerfile
 First we will make a dockerfile so that we can build an image for this project.
 
-- Make a dockerfile called `dockerfile`
+- Make a dockerfile called `Dockerfile`
 - Make the dockerfile use the `tensorflow/tensorflow:2.7.0-gpu` container as the base 
 - In the dockerfile install the ubuntu package `graphviz` and `python3-tk`
     - Whenever you install packages you always need to update first in the same line. If you do not update then if you build the image later it will run into errors because the packages will be out of date. Here is the dockerfile example lines of code to install packages: 
