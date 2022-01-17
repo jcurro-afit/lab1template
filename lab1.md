@@ -55,7 +55,7 @@ Usually we will not run docker image directly but we will once to show how it is
 - Give the image the tag `lab1:yourlastname`. 
 - Make `buildandrundocker.sh` also run the image after the image is build. The container should automatically run the `echoscript.sh` when started due to the `CMD` line added in the `Dockerfile`.
 
-Run `buildandrundocker.sh` and briefly explain the echo output in a comment in the `buildandrundocker.sh` file. You should compare and contrast the argument and the environment variables from the two times we ran  `echoscript.sh`. 
+Run `buildandrundocker.sh` and briefly explain the echo output in a comment in the `buildandrundocker.sh` file. You should compare and contrast the argument and the environment variables from the *two* times we execute  `echoscript.sh`. 
 
 ## Docker Compose
 We will usually run all our docker containers using `docker-compose`. This will walk through the steps to make a docker compose file
@@ -82,7 +82,7 @@ We will usually run all our docker containers using `docker-compose`. This will 
 - Set the default working directory to the `/opt/project` folder ide the container.
 - Make the `command` argument of the docker compose run `echoscript.sh` from above using `/bin/bash`.
 
-Run `docker-compose build` (build the container even if it already exists) and then `docker-compose up` to run the docker compose. Briefly explain in a comment the `buildandrundocker.sh` file the difference between when you ran the docker container without the compose changing values. 
+Run `docker-compose build` (build the container even if it already exists) and then `docker-compose up` to run the docker compose. Briefly explain with a comment in the `buildandrundocker.sh` file the difference between when you built the docker container with and without the `docker-compose.yml` changing values. Also comment the differences when running the docker container with and without the `docker-compose.yml` changing values.  
  
 ## Python
 Next we will write a python file called `lab1.py` that will run in the docker container we just made.
