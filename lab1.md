@@ -129,7 +129,7 @@ For good programming practices and to make it easier to grade students will also
 
 To save space on our GitLab server never put large files in the git repository. Large files are around 100s of MB or larger. For example do not upload training data or models. Uploading figures is alright but please try not to make very large figures.
 
-In order to ignore large files and other nusiance files we will add a file called `.gitignore` to the project root. We will add `*.pyc` and `.idea` to the `.gitignore` file which will ignore all `.pyc` files and the `.idea` folder which is PyCharm's project for your personal project settings. Always make the `.gitignore` before adding and committing files.
+In order to ignore large files and other nuisance files we will add a file called `.gitignore` to the project root. We will add `*.pyc` and `.idea` to the `.gitignore` file which will ignore all `.pyc` files and the `.idea` folder which is PyCharm's project for your personal project settings. Always make the `.gitignore` before adding and committing files.
 
 ### Add and Commit Files
 Use the GitHub Classroom assignment for each lab to submit your final code for each lab. Clone the template example with your name made automatically and modify the code for the lab (commit often!). In order to show that you can make new commits add a comment line to the python script with the text `new commit text`. Then add then commit that change and push that as well. This shows that you know enough to clone, add, commit, commit again, and then push a repo. 
